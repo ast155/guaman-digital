@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --gd-background: #050505;
+  --gd-surface: #0a0a0a;
+  --gd-surface-soft: #111111;
+
+  --gd-text: #ffffff;
+  --gd-text-secondary: #a3a3a3;
+  --gd-text-muted: #737373;
+
+  --gd-primary: #2563eb;
+  --gd-primary-hover: #3b82f6;
+  --gd-primary-soft: rgba(37, 99, 235, 0.12);
+
+  --gd-border: rgba(255, 255, 255, 0.1);
+  --gd-border-strong: rgba(255, 255, 255, 0.16);
+
+  --gd-radius-sm: 12px;
+  --gd-radius-md: 20px;
+  --gd-radius-lg: 32px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--gd-background);
+  color: var(--gd-text);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sora), var(--font-inter), sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: var(--gd-primary);
+  color: white;
+}
+
+.hero-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+.hero-glow-one {
+  width: 500px;
+  height: 500px;
+  top: 5%;
+  right: -8%;
+  background: rgba(37, 99, 235, 0.18);
+}
+
+.hero-glow-two {
+  width: 450px;
+  height: 450px;
+  bottom: 5%;
+  left: -15%;
+  background: rgba(59, 130, 246, 0.08);
+}
