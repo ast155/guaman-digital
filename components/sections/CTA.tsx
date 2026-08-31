@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
   ArrowUpRight,
   CheckCircle2,
+  Clock3,
   Globe2,
   Loader2,
   MessageSquare,
@@ -30,6 +31,7 @@ export default function CTA() {
       phone: formData.get("phone"),
       service: formData.get("service"),
       budget: formData.get("budget"),
+      timeline: formData.get("timeline"),
       message: formData.get("message"),
     };
 
@@ -58,9 +60,9 @@ export default function CTA() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden border-t border-white/10 px-6 py-28 lg:px-8 lg:py-36"
+      className="relative overflow-hidden border-t border-white/10 px-5 py-24 sm:px-6 sm:py-28 lg:px-8 lg:py-36"
     >
-      {/* Background effects */}
+      {/* Background glow */}
       <motion.div
         className="pointer-events-none absolute right-[-15%] top-[5%] h-[520px] w-[520px] rounded-full bg-blue-600/[0.08] blur-[160px]"
         animate={{
@@ -81,7 +83,7 @@ export default function CTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.7 }}
-          className="grid gap-14 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.025] p-8 sm:p-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 lg:p-14"
+          className="grid gap-14 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.025] p-7 sm:p-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 lg:p-14"
         >
           {/* Left side */}
           <div className="flex flex-col justify-between">
@@ -91,18 +93,19 @@ export default function CTA() {
               </p>
 
               <h2 className="max-w-xl text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl">
-                Ready to build something
+                Let&apos;s build something
                 <span className="block text-neutral-500">
-                  better for your business?
+                  that moves your business forward.
                 </span>
               </h2>
 
-              <p className="mt-6 max-w-xl text-lg leading-8 text-neutral-400">
-                Tell us what you&apos;re working on. We&apos;ll review your
-                project, learn about your goals, and recommend the best way to
-                move forward.
+              <p className="mt-6 max-w-xl text-base leading-7 text-neutral-400 sm:text-lg sm:leading-8">
+                Tell us a little about your business and what you&apos;re
+                looking to build. We&apos;ll review your project and get back
+                to you with clear next steps.
               </p>
 
+              {/* Steps */}
               <div className="mt-10 space-y-7">
                 <div className="flex gap-4">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-blue-500">
@@ -115,8 +118,8 @@ export default function CTA() {
                     </p>
 
                     <p className="mt-1 max-w-md text-sm leading-6 text-neutral-500">
-                      Share your goals, current website, challenges, and the
-                      solution you&apos;re looking for.
+                      Share your goals, current website, challenges, and what
+                      you&apos;d like us to help you build.
                     </p>
                   </div>
                 </div>
@@ -128,12 +131,12 @@ export default function CTA() {
 
                   <div>
                     <p className="font-medium text-white">
-                      We review your request
+                      We review your project
                     </p>
 
                     <p className="mt-1 max-w-md text-sm leading-6 text-neutral-500">
-                      We evaluate your needs, functionality, budget, and the
-                      best approach for your project.
+                      We&apos;ll look at your goals, functionality, timeline,
+                      budget, and the best approach for your business.
                     </p>
                   </div>
                 </div>
@@ -149,14 +152,15 @@ export default function CTA() {
                     </p>
 
                     <p className="mt-1 max-w-md text-sm leading-6 text-neutral-500">
-                      We&apos;ll contact you to discuss your project and the
-                      best way to get started.
+                      We&apos;ll contact you to discuss the project and provide
+                      clear recommendations for moving forward.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
+            {/* Language support */}
             <div className="mt-12 border-t border-white/10 pt-7">
               <div className="flex items-center gap-2 text-sm text-neutral-500">
                 <Globe2 size={16} />
@@ -174,6 +178,7 @@ export default function CTA() {
             transition={{ duration: 0.7, delay: 0.12 }}
             className="grid gap-5 rounded-[1.5rem] border border-white/10 bg-black/20 p-6 sm:p-8"
           >
+            {/* Name / Business */}
             <div className="grid gap-5 sm:grid-cols-2">
               <div>
                 <label
@@ -188,6 +193,7 @@ export default function CTA() {
                   name="name"
                   type="text"
                   required
+                  autoComplete="name"
                   placeholder="Your name"
                   className="w-full rounded-xl border border-white/10 bg-[#080808] px-4 py-3.5 text-white outline-none transition placeholder:text-neutral-600 focus:border-blue-500/60 focus:ring-2 focus:ring-blue-500/10"
                 />
@@ -205,12 +211,14 @@ export default function CTA() {
                   id="business"
                   name="business"
                   type="text"
+                  autoComplete="organization"
                   placeholder="Your business"
                   className="w-full rounded-xl border border-white/10 bg-[#080808] px-4 py-3.5 text-white outline-none transition placeholder:text-neutral-600 focus:border-blue-500/60 focus:ring-2 focus:ring-blue-500/10"
                 />
               </div>
             </div>
 
+            {/* Email / Phone */}
             <div className="grid gap-5 sm:grid-cols-2">
               <div>
                 <label
@@ -225,6 +233,7 @@ export default function CTA() {
                   name="email"
                   type="email"
                   required
+                  autoComplete="email"
                   placeholder="you@business.com"
                   className="w-full rounded-xl border border-white/10 bg-[#080808] px-4 py-3.5 text-white outline-none transition placeholder:text-neutral-600 focus:border-blue-500/60 focus:ring-2 focus:ring-blue-500/10"
                 />
@@ -242,12 +251,14 @@ export default function CTA() {
                   id="phone"
                   name="phone"
                   type="tel"
+                  autoComplete="tel"
                   placeholder="(555) 555-5555"
                   className="w-full rounded-xl border border-white/10 bg-[#080808] px-4 py-3.5 text-white outline-none transition placeholder:text-neutral-600 focus:border-blue-500/60 focus:ring-2 focus:ring-blue-500/10"
                 />
               </div>
             </div>
 
+            {/* Service */}
             <div>
               <label
                 htmlFor="service"
@@ -280,32 +291,79 @@ export default function CTA() {
               </select>
             </div>
 
-            <div>
-              <label
-                htmlFor="budget"
-                className="mb-2 block text-sm text-neutral-300"
-              >
-                Estimated budget
-              </label>
+            {/* Budget / Timeline */}
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label
+                  htmlFor="budget"
+                  className="mb-2 block text-sm text-neutral-300"
+                >
+                  Estimated budget
+                </label>
 
-              <select
-                id="budget"
-                name="budget"
-                defaultValue=""
-                className="w-full rounded-xl border border-white/10 bg-[#080808] px-4 py-3.5 text-neutral-300 outline-none transition focus:border-blue-500/60 focus:ring-2 focus:ring-blue-500/10"
-              >
-                <option value="" disabled>
-                  Select your budget
-                </option>
+                <select
+                  id="budget"
+                  name="budget"
+                  defaultValue=""
+                  className="w-full rounded-xl border border-white/10 bg-[#080808] px-4 py-3.5 text-neutral-300 outline-none transition focus:border-blue-500/60 focus:ring-2 focus:ring-blue-500/10"
+                >
+                  <option value="" disabled>
+                    Select budget
+                  </option>
 
-                <option value="$500 - $1,000">$500 – $1,000</option>
-                <option value="$1,000 - $2,000">$1,000 – $2,000</option>
-                <option value="$2,000 - $5,000">$2,000 – $5,000</option>
-                <option value="$5,000+">$5,000+</option>
-                <option value="Not sure yet">Not sure yet</option>
-              </select>
+                  <option value="$500 - $1,000">$500 – $1,000</option>
+                  <option value="$1,000 - $2,000">$1,000 – $2,000</option>
+                  <option value="$2,000 - $5,000">$2,000 – $5,000</option>
+                  <option value="$5,000+">$5,000+</option>
+                  <option value="Not sure yet">Not sure yet</option>
+                </select>
+              </div>
+
+              <div>
+                <label
+                  htmlFor="timeline"
+                  className="mb-2 block text-sm text-neutral-300"
+                >
+                  Timeline
+                </label>
+
+                <div className="relative">
+                  <Clock3
+                    size={16}
+                    className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-neutral-600"
+                  />
+
+                  <select
+                    id="timeline"
+                    name="timeline"
+                    defaultValue=""
+                    className="w-full appearance-none rounded-xl border border-white/10 bg-[#080808] py-3.5 pl-11 pr-4 text-neutral-300 outline-none transition focus:border-blue-500/60 focus:ring-2 focus:ring-blue-500/10"
+                  >
+                    <option value="" disabled>
+                      Select timeline
+                    </option>
+
+                    <option value="As soon as possible">
+                      As soon as possible
+                    </option>
+
+                    <option value="Within 2-4 weeks">
+                      Within 2–4 weeks
+                    </option>
+
+                    <option value="Within 1-2 months">
+                      Within 1–2 months
+                    </option>
+
+                    <option value="Just exploring">
+                      Just exploring options
+                    </option>
+                  </select>
+                </div>
+              </div>
             </div>
 
+            {/* Message */}
             <div>
               <label
                 htmlFor="message"
@@ -319,26 +377,28 @@ export default function CTA() {
                 name="message"
                 required
                 rows={6}
-                placeholder="Tell us about your business, your goals, current website, features you need, or anything else we should know..."
+                placeholder="Tell us about your business, goals, current website, features you need, or anything else we should know..."
                 className="w-full resize-none rounded-xl border border-white/10 bg-[#080808] px-4 py-3.5 text-white outline-none transition placeholder:text-neutral-600 focus:border-blue-500/60 focus:ring-2 focus:ring-blue-500/10"
               />
             </div>
 
+            {/* Submit */}
             <motion.button
               type="submit"
               disabled={status === "loading"}
               whileHover={status !== "loading" ? { y: -2 } : undefined}
               whileTap={status !== "loading" ? { scale: 0.99 } : undefined}
-              className="group mt-2 inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-medium text-black transition hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-60"
+              className="group mt-2 inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-semibold text-black transition hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === "loading" ? (
                 <>
                   <Loader2 size={18} className="animate-spin" />
-                  Sending request...
+                  Sending...
                 </>
               ) : (
                 <>
-                  Submit Project Request
+                  Get My Free Quote
+
                   <ArrowUpRight
                     size={17}
                     className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -347,6 +407,25 @@ export default function CTA() {
               )}
             </motion.button>
 
+            {/* Trust */}
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-neutral-600">
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 size={13} />
+                Free project review
+              </span>
+
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 size={13} />
+                No obligation
+              </span>
+
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 size={13} />
+                English & Spanish
+              </span>
+            </div>
+
+            {/* Success */}
             {status === "success" && (
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
@@ -365,14 +444,15 @@ export default function CTA() {
                     </p>
 
                     <p className="mt-1 text-sm leading-6 text-green-400/70">
-                      Thank you. We&apos;ll review your information and contact
-                      you with the next steps.
+                      Thanks! We&apos;ll review your project and contact you
+                      with the next steps.
                     </p>
                   </div>
                 </div>
               </motion.div>
             )}
 
+            {/* Error */}
             {status === "error" && (
               <motion.div
                 initial={{ opacity: 0, y: 8 }}

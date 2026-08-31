@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -13,7 +14,9 @@ const projects = [
     tags: ["Web Design", "Booking", "Mobile"],
     number: "01",
     href: "/work/northline-barbers",
-    available: true,
+    image: "/northline/hero.jpg",
+    imageAlt: "Northline Barbers website concept",
+    accent: "from-neutral-950/90 via-neutral-950/25 to-transparent",
   },
   {
     category: "Restaurant",
@@ -23,7 +26,9 @@ const projects = [
     tags: ["Restaurant", "Reservations", "UX"],
     number: "02",
     href: "/work/casa-verde",
-    available: true,
+    image: "/casa-verde/hero.jpg",
+    imageAlt: "Casa Verde restaurant website concept",
+    accent: "from-emerald-950/80 via-black/20 to-transparent",
   },
   {
     category: "Contractor",
@@ -33,7 +38,9 @@ const projects = [
     tags: ["Lead Generation", "Services", "SEO"],
     number: "03",
     href: "/work/summit-build",
-    available: true,
+    image: "/summit-build/hero.jpg",
+    imageAlt: "Summit Build contractor website concept",
+    accent: "from-slate-950/85 via-slate-950/20 to-transparent",
   },
 ];
 
@@ -47,7 +54,7 @@ export default function Portfolio() {
       <div className="pointer-events-none absolute right-[-20%] top-[15%] h-[420px] w-[420px] rounded-full bg-blue-600/[0.05] blur-[140px] sm:right-[-15%] sm:h-[500px] sm:w-[500px] sm:blur-[150px]" />
 
       <div className="relative z-10 mx-auto max-w-7xl">
-        {/* Section heading */}
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -77,175 +84,161 @@ export default function Portfolio() {
         </motion.div>
 
         {/* Projects */}
-        <div className="space-y-5">
-          {projects.map((project, index) => {
-            const card = (
-              <motion.div
+        <div className="space-y-7 sm:space-y-9">
+          {projects.map((project, index) => (
+            <Link
+              key={project.title}
+              href={project.href}
+              className="block"
+            >
+              <motion.article
                 initial={{ opacity: 0, y: 45 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{
                   duration: 0.7,
-                  delay: index * 0.1,
+                  delay: index * 0.08,
                 }}
-                whileHover={project.available ? { y: -6 } : undefined}
-                className={`group relative overflow-hidden rounded-[1.75rem] border bg-white/[0.025] p-6 transition-colors duration-300 sm:rounded-[2rem] sm:p-8 lg:p-10 ${
-                  project.available
-                    ? "cursor-pointer border-white/10 hover:border-blue-500/25 hover:bg-white/[0.045]"
-                    : "cursor-default border-white/[0.07]"
-                }`}
+                whileHover={{ y: -6 }}
+                className="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.025] transition duration-500 hover:border-blue-500/25 hover:bg-white/[0.04] sm:rounded-[2rem]"
               >
-                {/* Hover glow */}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-500/[0.05] via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
+                {/* Content */}
+                <div className="relative z-20 p-6 sm:p-8 lg:p-10">
+                  <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-start">
+                    <div className="max-w-3xl">
+                      <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
+                          {project.category}
+                        </p>
 
-                <div className="relative z-10 flex flex-col justify-between gap-8 sm:gap-10 lg:flex-row lg:items-start">
-                  <div className="max-w-3xl">
-                    <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
-                        {project.category}
+                        <span className="h-px w-8 bg-white/10 sm:w-10" />
+
+                        <span className="text-xs text-white/20">
+                          {project.number}
+                        </span>
+                      </div>
+
+                      <h3 className="mt-5 text-2xl font-semibold tracking-[-0.04em] text-white sm:text-4xl">
+                        {project.title}
+                      </h3>
+
+                      <p className="mt-4 max-w-2xl text-sm leading-7 text-neutral-400 sm:mt-5 sm:text-base">
+                        {project.description}
                       </p>
 
-                      <span className="h-px w-8 bg-white/10 sm:w-10" />
-
-                      <span className="text-xs text-white/20">
-                        {project.number}
-                      </span>
-
-                      {!project.available && (
-                        <span className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.12em] text-neutral-500">
-                          Coming Soon
-                        </span>
-                      )}
-                    </div>
-
-                    <h3 className="mt-5 text-2xl font-semibold tracking-[-0.04em] text-white sm:text-4xl">
-                      {project.title}
-                    </h3>
-
-                    <p className="mt-4 max-w-2xl text-sm leading-7 text-neutral-400 sm:mt-5 sm:text-base">
-                      {project.description}
-                    </p>
-
-                    <div className="mt-6 flex flex-wrap gap-2 sm:mt-7">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs text-neutral-400"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <motion.div
-                    whileHover={
-                      project.available ? { x: 4, y: -4 } : undefined
-                    }
-                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border text-base transition sm:h-12 sm:w-12 sm:text-lg ${
-                      project.available
-                        ? "border-white/10 bg-white/[0.04] text-white group-hover:border-blue-500/30 group-hover:bg-blue-500/10"
-                        : "border-white/[0.07] bg-white/[0.02] text-neutral-600"
-                    }`}
-                  >
-                    <ArrowUpRight size={18} />
-                  </motion.div>
-                </div>
-
-                {/* Website preview mockup */}
-                <div className="relative z-10 mt-8 overflow-hidden rounded-2xl border border-white/10 bg-[#080808] sm:mt-10">
-                  <div className="flex items-center gap-1.5 border-b border-white/10 px-3 py-3 sm:px-4">
-                    <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
-
-                    <div className="ml-3 h-2.5 w-20 rounded-full bg-white/[0.06] sm:ml-4 sm:w-32" />
-                  </div>
-
-                  <div className="grid min-h-[200px] gap-5 p-5 sm:min-h-[230px] sm:p-6 md:grid-cols-[1.3fr_0.7fr] md:p-8">
-                    <div className="flex flex-col justify-center">
-                      <div
-                        className={`h-3 w-20 rounded-full sm:w-24 ${
-                          project.available
-                            ? "bg-blue-500/20"
-                            : "bg-white/[0.06]"
-                        }`}
-                      />
-
-                      <div className="mt-5 h-6 w-4/5 rounded-lg bg-white/15 sm:h-7" />
-                      <div className="mt-3 h-6 w-3/5 rounded-lg bg-white/10 sm:h-7" />
-
-                      <div className="mt-6 h-3 w-full max-w-md rounded-full bg-white/[0.05]" />
-                      <div className="mt-2 h-3 w-4/5 max-w-sm rounded-full bg-white/[0.05]" />
-
-                      <div className="mt-6 flex flex-wrap gap-3">
-                        <div
-                          className={`h-10 w-24 rounded-full sm:w-28 ${
-                            project.available
-                              ? "bg-blue-600/40"
-                              : "bg-white/[0.07]"
-                          }`}
-                        />
-
-                        <div className="h-10 w-24 rounded-full border border-white/10 bg-white/[0.03] sm:w-28" />
+                      <div className="mt-6 flex flex-wrap gap-2 sm:mt-7">
+                        {project.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs text-neutral-400"
+                          >
+                            {tag}
+                          </span>
+                        ))}
                       </div>
                     </div>
 
-                    <div className="min-h-[120px] rounded-2xl border border-white/10 bg-white/[0.03] md:min-h-0" />
+                    <motion.div
+                      whileHover={{ x: 4, y: -4 }}
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white transition group-hover:border-blue-500/30 group-hover:bg-blue-500/10 sm:h-12 sm:w-12"
+                    >
+                      <ArrowUpRight size={18} />
+                    </motion.div>
+                  </div>
+                </div>
+
+                {/* Browser / image preview */}
+                <div className="relative z-10 mx-6 mb-6 overflow-hidden rounded-2xl border border-white/10 bg-[#080808] sm:mx-8 sm:mb-8 lg:mx-10 lg:mb-10">
+                  {/* Browser bar */}
+                  <div className="flex items-center border-b border-white/10 bg-[#0b0b0b] px-4 py-3">
+                    <div className="flex gap-1.5">
+                      <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
+                    </div>
+
+                    <div className="mx-auto hidden rounded-md border border-white/[0.06] bg-white/[0.03] px-8 py-1.5 text-[10px] text-neutral-600 sm:block">
+                      {project.title.toLowerCase().replaceAll(" ", "")}.com
+                    </div>
+
+                    <div className="w-[42px]" />
+                  </div>
+
+                  {/* Photo */}
+                  <div className="relative aspect-[16/9] min-h-[230px] overflow-hidden sm:min-h-[320px] lg:min-h-[420px]">
+                    <Image
+                      src={project.image}
+                      alt={project.imageAlt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 1200px"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]"
+                    />
+
+                    {/* Image overlays */}
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-r ${project.accent}`}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10" />
+
+                    {/* Mini website content */}
+                    <div className="absolute inset-0 flex items-end p-5 sm:p-8 lg:p-12">
+                      <div className="max-w-xl">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/60 sm:text-xs">
+                          {project.category} Website Concept
+                        </p>
+
+                        <p className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-white sm:mt-3 sm:text-4xl lg:text-5xl">
+                          {project.title}
+                        </p>
+
+                        <div className="mt-5 hidden items-center gap-3 sm:flex">
+                          <div className="rounded-full bg-white px-5 py-2.5 text-xs font-semibold text-black">
+                            Explore Project
+                          </div>
+
+                          <div className="rounded-full border border-white/25 bg-black/20 px-5 py-2.5 text-xs font-medium text-white backdrop-blur-md">
+                            View Concept
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 {/* Bottom */}
-                <div className="relative z-10 mt-6 flex items-center justify-between">
-                  <p
-                    className={`text-sm font-medium ${
-                      project.available ? "text-white" : "text-neutral-600"
-                    }`}
-                  >
-                    {project.available
-                      ? "View Live Concept"
-                      : "Concept in development"}
-                  </p>
+                <div className="relative z-20 flex items-center justify-between border-t border-white/[0.06] px-6 py-5 sm:px-8 lg:px-10">
+                  <div>
+                    <p className="text-sm font-medium text-white">
+                      View Live Concept
+                    </p>
 
-                  {project.available && (
-                    <div className="flex items-center gap-2 text-sm text-blue-400">
-                      Explore
-                      <ArrowUpRight
-                        size={15}
-                        className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                      />
-                    </div>
-                  )}
+                    <p className="mt-1 hidden text-xs text-neutral-600 sm:block">
+                      Explore the full website experience
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-sm font-medium text-blue-400">
+                    Explore
+                    <ArrowUpRight
+                      size={15}
+                      className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    />
+                  </div>
                 </div>
 
-                <div
-                  className={`absolute bottom-0 left-0 h-px w-0 transition-all duration-700 ${
-                    project.available
-                      ? "bg-gradient-to-r from-blue-500 via-blue-400/50 to-transparent group-hover:w-full"
-                      : ""
-                  }`}
-                />
-              </motion.div>
-            );
+                {/* Hover accent */}
+                <div className="absolute bottom-0 left-0 h-px w-0 bg-gradient-to-r from-blue-500 via-blue-400/50 to-transparent transition-all duration-700 group-hover:w-full" />
+              </motion.article>
+            </Link>
+          ))}
+        </div>
 
-            if (project.available) {
-              return (
-                <Link
-                  key={project.title}
-                  href={project.href}
-                  className="block"
-                >
-                  {card}
-                </Link>
-              );
-            }
-
-            return (
-              <div key={project.title}>
-                {card}
-              </div>
-            );
-          })}
+        {/* Portfolio disclaimer */}
+        <div className="mt-8 flex justify-center sm:mt-10">
+          <p className="max-w-2xl text-center text-xs leading-6 text-neutral-600">
+            These are concept projects created by Guaman Digital to demonstrate
+            our design approach across different industries.
+          </p>
         </div>
       </div>
     </section>
