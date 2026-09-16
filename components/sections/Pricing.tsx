@@ -1,7 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { Check, ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight, Check, Sparkles } from "lucide-react";
 
 const plans = [
   {
@@ -67,13 +64,7 @@ export default function Pricing() {
       <div className="pointer-events-none absolute right-[-10%] top-[15%] h-[520px] w-[520px] rounded-full bg-blue-600/[0.05] blur-[150px]" />
 
       <div className="relative z-10 mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.7 }}
-          className="mb-16 max-w-3xl"
-        >
+        <div className="mb-16 max-w-3xl">
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-blue-500">
             Pricing
           </p>
@@ -88,24 +79,16 @@ export default function Pricing() {
             can be customized based on your goals, features, and long-term
             needs.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid gap-5 lg:grid-cols-3">
-          {plans.map((plan, index) => (
-            <motion.div
+          {plans.map((plan) => (
+            <div
               key={plan.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{
-                duration: 0.65,
-                delay: index * 0.1,
-              }}
-              whileHover={{ y: -7 }}
-              className={`relative flex flex-col overflow-hidden rounded-[2rem] border p-8 sm:p-10 ${
+              className={`relative flex flex-col overflow-hidden rounded-[2rem] border p-8 transition duration-300 hover:-translate-y-1.5 sm:p-10 ${
                 plan.featured
                   ? "border-blue-500/40 bg-blue-500/[0.07] shadow-[0_0_100px_rgba(37,99,235,0.08)]"
-                  : "border-white/10 bg-white/[0.025]"
+                  : "border-white/10 bg-white/[0.025] hover:border-white/20"
               }`}
             >
               {plan.featured && (
@@ -169,10 +152,9 @@ export default function Pricing() {
                   ))}
                 </div>
 
-                <motion.a
+                <a
                   href="#contact"
-                  whileTap={{ scale: 0.98 }}
-                  className={`group mt-10 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium transition ${
+                  className={`group mt-10 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium transition active:scale-[0.98] ${
                     plan.featured
                       ? "bg-white text-black hover:bg-neutral-200"
                       : "border border-white/10 bg-white/[0.04] text-white hover:border-white/20 hover:bg-white/[0.08]"
@@ -184,19 +166,13 @@ export default function Pricing() {
                     size={16}
                     className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                   />
-                </motion.a>
+                </a>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="mt-8 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.025] p-8 sm:p-10"
-        >
+        <div className="mt-8 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.025] p-8 sm:p-10">
           <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-500">
@@ -219,13 +195,14 @@ export default function Pricing() {
               className="group inline-flex shrink-0 items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-6 py-3.5 text-sm font-medium text-white transition hover:border-white/20 hover:bg-white/[0.08]"
             >
               Explore Care Plans
+
               <ArrowUpRight
                 size={16}
                 className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
               />
             </a>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,8 +1,5 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 const projects = [
@@ -55,11 +52,7 @@ export default function Portfolio() {
 
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.7 }}
+        <div
           className="mb-12 flex flex-col justify-between gap-8 sm:mb-16 lg:flex-row lg:items-end"
         >
           <div className="max-w-3xl">
@@ -81,7 +74,7 @@ export default function Portfolio() {
             <span className="h-1.5 w-1.5 rounded-full bg-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.8)]" />
             Concept Projects
           </div>
-        </motion.div>
+        </div>
 
         {/* Projects */}
         <div className="space-y-7 sm:space-y-9">
@@ -91,15 +84,7 @@ export default function Portfolio() {
               href={project.href}
               className="block"
             >
-              <motion.article
-                initial={{ opacity: 0, y: 45 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{
-                  duration: 0.7,
-                  delay: index * 0.08,
-                }}
-                whileHover={{ y: -6 }}
+              <article
                 className="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.025] transition duration-500 hover:border-blue-500/25 hover:bg-white/[0.04] sm:rounded-[2rem]"
               >
                 {/* Content */}
@@ -138,12 +123,11 @@ export default function Portfolio() {
                       </div>
                     </div>
 
-                    <motion.div
-                      whileHover={{ x: 4, y: -4 }}
+                    <div
                       className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white transition group-hover:border-blue-500/30 group-hover:bg-blue-500/10 sm:h-12 sm:w-12"
                     >
                       <ArrowUpRight size={18} />
-                    </motion.div>
+                    </div>
                   </div>
                 </div>
 
@@ -228,7 +212,7 @@ export default function Portfolio() {
 
                 {/* Hover accent */}
                 <div className="absolute bottom-0 left-0 h-px w-0 bg-gradient-to-r from-blue-500 via-blue-400/50 to-transparent transition-all duration-700 group-hover:w-full" />
-              </motion.article>
+              </article>
             </Link>
           ))}
         </div>

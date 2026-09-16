@@ -1,291 +1,177 @@
-"use client";
-
-import { motion } from "framer-motion";
+import Link from "next/link";
 import {
-  ArrowUpRight,
-  Check,
-  ShieldCheck,
-  Sparkles,
+  ArrowRight,
+  CheckCircle2,
+  Code2,
+  Lightbulb,
+  MessageSquare,
+  Rocket,
 } from "lucide-react";
 
-const plans = [
+const steps = [
   {
-    name: "Starter",
-    price: "$699",
-    label: "Starting at",
+    number: "01",
+    title: "Discovery",
     description:
-      "For small businesses that need a clean, professional website and a strong online presence.",
-    bestFor: "Best for new or local businesses",
-    features: [
-      "Up to 5 pages",
-      "Custom responsive design",
-      "Contact form",
-      "Google Maps integration",
-      "Basic SEO setup",
-      "Social media integration",
+      "We start by understanding your business, goals, audience, services, and what you want your website to accomplish.",
+    icon: MessageSquare,
+    items: [
+      "Business goals",
+      "Target audience",
+      "Services & offers",
+      "Competitor review",
+    ],
+  },
+  {
+    number: "02",
+    title: "Strategy & Design",
+    description:
+      "Next, we plan the structure, visual direction, and user experience so everything feels clear, modern, and intentional.",
+    icon: Lightbulb,
+    items: [
+      "Website structure",
+      "Content direction",
+      "UI & visual design",
+      "User experience",
+    ],
+  },
+  {
+    number: "03",
+    title: "Build & Refine",
+    description:
+      "Once the direction is clear, we build the website, optimize it for mobile, and refine the details before launch.",
+    icon: Code2,
+    items: [
+      "Development",
       "Mobile optimization",
-      "1 revision round",
+      "Performance",
+      "Final refinements",
     ],
-    featured: false,
   },
   {
-    name: "Business",
-    price: "$1,299",
-    label: "Starting at",
+    number: "04",
+    title: "Launch & Support",
     description:
-      "For growing businesses that need a stronger website built to earn trust, generate leads, and convert visitors.",
-    bestFor: "Best value for growing businesses",
-    features: [
-      "Up to 10 pages",
-      "Custom premium design",
-      "Advanced mobile optimization",
-      "Booking or scheduling integration",
-      "Google Analytics setup",
-      "SEO foundations",
-      "Performance optimization",
-      "2 revision rounds",
-      "Priority launch support",
+      "After everything is tested and ready, we launch your website and can continue helping with updates and improvements.",
+    icon: Rocket,
+    items: [
+      "Final testing",
+      "Website launch",
+      "Ongoing support",
+      "Future improvements",
     ],
-    featured: true,
-  },
-  {
-    name: "Premium",
-    price: "$2,499+",
-    label: "Starting at",
-    description:
-      "For businesses that need advanced functionality, custom integrations, automation, or a more complex digital experience.",
-    bestFor: "Best for advanced projects",
-    features: [
-      "Custom page structure",
-      "Premium UI/UX design",
-      "Advanced interactions",
-      "AI or automation integrations",
-      "E-commerce or advanced booking",
-      "Custom integrations",
-      "Advanced SEO foundations",
-      "Analytics setup",
-      "Priority support",
-    ],
-    featured: false,
   },
 ];
 
-export default function Pricing() {
+export default function Process() {
   return (
     <section
-      id="pricing"
-      className="relative overflow-hidden border-t border-white/10 px-5 py-24 sm:px-6 sm:py-28 lg:px-8 lg:py-36"
+      id="process"
+      className="relative overflow-hidden border-y border-white/10 bg-[#070707] py-24 sm:py-28 lg:py-32"
     >
       {/* Background glow */}
-      <div className="pointer-events-none absolute right-[-12%] top-[12%] h-[520px] w-[520px] rounded-full bg-blue-600/[0.05] blur-[150px]" />
+      <div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-blue-600/[0.06] blur-[160px]" />
 
-      <div className="relative z-10 mx-auto max-w-7xl">
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.7 }}
-          className="mb-14 flex flex-col justify-between gap-8 sm:mb-16 lg:flex-row lg:items-end"
-        >
-          <div className="max-w-3xl">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-blue-500">
-              Pricing
-            </p>
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-blue-400">
+              <CheckCircle2 size={14} />
+              Our Process
+            </div>
 
-            <h2 className="text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl">
-              Simple pricing.
+            <h2 className="mt-6 text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">
+              Simple process.
               <span className="block text-neutral-500">
-                Built around your goals.
+                Clear from start to finish.
               </span>
             </h2>
           </div>
 
-          <p className="max-w-xl text-base leading-7 text-neutral-400 sm:text-lg sm:leading-8">
-            Choose a starting point that fits your business. Every project can
-            be customized based on your goals, features, content, and long-term
-            needs.
+          <p className="max-w-2xl text-base leading-8 text-neutral-400 lg:ml-auto">
+            Building a website shouldn&apos;t feel confusing. We keep the
+            process straightforward, communicate clearly, and make sure you
+            know what&apos;s happening at every stage.
           </p>
-        </motion.div>
-
-        {/* Pricing cards */}
-        <div className="grid gap-5 lg:grid-cols-3">
-          {plans.map((plan, index) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{
-                duration: 0.65,
-                delay: index * 0.08,
-              }}
-              whileHover={{ y: -7 }}
-              className={`relative flex flex-col overflow-hidden rounded-[2rem] border p-7 transition duration-300 sm:p-8 lg:p-9 ${
-                plan.featured
-                  ? "border-blue-500/40 bg-blue-500/[0.07] shadow-[0_0_100px_rgba(37,99,235,0.08)]"
-                  : "border-white/10 bg-white/[0.025] hover:border-white/20"
-              }`}
-            >
-              {plan.featured && (
-                <>
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-500/[0.08] via-transparent to-transparent" />
-
-                  <div className="absolute right-6 top-6 inline-flex items-center gap-1.5 rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-blue-400 sm:text-xs">
-                    <Sparkles size={13} />
-                    Most Popular
-                  </div>
-                </>
-              )}
-
-              <div className="relative z-10 flex h-full flex-col">
-                {/* Plan name */}
-                <div>
-                  <p className="text-sm font-medium text-neutral-400">
-                    {plan.name}
-                  </p>
-
-                  <p
-                    className={`mt-2 text-xs ${
-                      plan.featured ? "text-blue-400" : "text-neutral-600"
-                    }`}
-                  >
-                    {plan.bestFor}
-                  </p>
-                </div>
-
-                {/* Price */}
-                <div className="mt-8">
-                  <p className="mb-2 text-xs uppercase tracking-[0.16em] text-neutral-600">
-                    {plan.label}
-                  </p>
-
-                  <h3 className="text-5xl font-semibold tracking-[-0.05em] text-white">
-                    {plan.price}
-                  </h3>
-
-                  <p className="mt-6 min-h-[105px] text-sm leading-7 text-neutral-400 sm:text-base">
-                    {plan.description}
-                  </p>
-                </div>
-
-                <div className="my-8 h-px bg-white/10" />
-
-                {/* Features */}
-                <div className="flex-1 space-y-4">
-                  {plan.features.map((feature) => (
-                    <div key={feature} className="flex items-start gap-3">
-                      <div
-                        className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
-                          plan.featured
-                            ? "bg-blue-500/10"
-                            : "bg-white/[0.05]"
-                        }`}
-                      >
-                        <Check
-                          size={13}
-                          strokeWidth={2.2}
-                          className={
-                            plan.featured
-                              ? "text-blue-400"
-                              : "text-neutral-400"
-                          }
-                        />
-                      </div>
-
-                      <p className="text-sm leading-6 text-neutral-300">
-                        {feature}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* CTA */}
-                <motion.a
-                  href="#contact"
-                  whileTap={{ scale: 0.98 }}
-                  className={`group mt-10 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition ${
-                    plan.featured
-                      ? "bg-white text-black hover:bg-neutral-200"
-                      : "border border-white/10 bg-white/[0.04] text-white hover:border-white/20 hover:bg-white/[0.08]"
-                  }`}
-                >
-                  Get a Free Quote
-
-                  <ArrowUpRight
-                    size={16}
-                    className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  />
-                </motion.a>
-              </div>
-            </motion.div>
-          ))}
         </div>
 
-        {/* Custom project note */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-6 flex items-start gap-3 rounded-2xl border border-white/[0.07] bg-white/[0.015] px-5 py-4"
-        >
-          <ShieldCheck
-            size={17}
-            className="mt-0.5 shrink-0 text-neutral-500"
-          />
+        {/* Process cards */}
+        <div className="relative mt-16">
+          <div className="pointer-events-none absolute left-0 right-0 top-10 hidden h-px bg-gradient-to-r from-transparent via-white/10 to-transparent lg:block" />
 
-          <p className="text-xs leading-6 text-neutral-600 sm:text-sm">
-            Pricing shown is a starting point. Final pricing depends on project
-            scope, content, functionality, integrations, and timeline. You&apos;ll
-            receive a clear quote before work begins.
-          </p>
-        </motion.div>
+          <div className="grid items-stretch gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
 
-        {/* Monthly care */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="mt-8 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.025]"
-        >
-          <div className="flex flex-col justify-between gap-8 p-7 sm:p-9 lg:flex-row lg:items-center lg:p-10">
-            <div className="max-w-3xl">
-              <div className="flex flex-wrap items-center gap-3">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-500">
-                  Monthly Website Care
-                </p>
+              return (
+                <div
+                  key={step.number}
+                  className="relative flex min-w-0 flex-col"
+                >
+                  {/* Icon */}
+                  <div className="relative z-10 mb-7 flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-[#0b0b0b] shadow-xl shadow-black/20">
+                    <Icon size={25} className="text-blue-400" />
+                  </div>
 
-                <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.12em] text-neutral-400">
-                  From $75/month
-                </span>
-              </div>
+                  {/* Card */}
+                  <div className="flex flex-1 flex-col rounded-3xl border border-white/10 bg-white/[0.025] p-7 transition duration-300 hover:border-blue-500/20 hover:bg-white/[0.04]">
+                    <p className="text-xs font-semibold tracking-[0.2em] text-blue-400">
+                      {step.number}
+                    </p>
 
-              <h3 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-white sm:text-3xl">
-                Keep your website secure, updated, and performing.
-              </h3>
+                    <h3 className="mt-3 text-xl font-semibold text-white">
+                      {step.title}
+                    </h3>
 
-              <p className="mt-4 max-w-3xl text-sm leading-7 text-neutral-400 sm:text-base">
-                Ongoing care can include content updates, monitoring, backups,
-                technical support, performance improvements, and future website
-                changes as your business grows.
+                    <p className="mt-4 text-sm leading-7 text-neutral-500">
+                      {step.description}
+                    </p>
+
+                    <div className="mt-6 space-y-3">
+                      {step.items.map((item) => (
+                        <div
+                          key={item}
+                          className="flex items-start gap-2.5 text-sm text-neutral-400"
+                        >
+                          <CheckCircle2
+                            size={15}
+                            className="mt-0.5 shrink-0 text-blue-400"
+                          />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="relative z-10 mt-12 rounded-3xl border border-white/10 bg-[#0a0a0a]">
+          <div className="flex flex-col gap-6 px-7 py-8 sm:px-9 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <p className="text-lg font-semibold text-white">
+                Ready to get started?
+              </p>
+
+              <p className="mt-2 max-w-xl text-sm leading-6 text-neutral-500">
+                Tell us about your business and what you&apos;re looking to
+                build. We&apos;ll help you figure out the best next step.
               </p>
             </div>
 
-            <a
-              href="#contact"
-              className="group inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-6 py-3.5 text-sm font-medium text-white transition hover:border-white/20 hover:bg-white/[0.08]"
+            <Link
+              href="/#contact"
+              className="inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-black transition hover:bg-neutral-200 lg:self-auto"
             >
-              Ask About Website Care
-
-              <ArrowUpRight
-                size={16}
-                className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-              />
-            </a>
+              Start Your Project
+              <ArrowRight size={16} />
+            </Link>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

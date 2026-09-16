@@ -1,7 +1,6 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { motion } from "framer-motion";
 import {
   ArrowUpRight,
   CheckCircle2,
@@ -63,26 +62,12 @@ export default function CTA() {
       className="relative overflow-hidden border-t border-white/10 px-5 py-24 sm:px-6 sm:py-28 lg:px-8 lg:py-36"
     >
       {/* Background glow */}
-      <motion.div
+      <div
         className="pointer-events-none absolute right-[-15%] top-[5%] h-[520px] w-[520px] rounded-full bg-blue-600/[0.08] blur-[160px]"
-        animate={{
-          x: [0, -20, 10, 0],
-          y: [0, 15, -10, 0],
-          scale: [1, 1.05, 0.97, 1],
-        }}
-        transition={{
-          duration: 14,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
       />
 
       <div className="relative z-10 mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 35 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.7 }}
+        <div
           className="grid gap-14 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.025] p-7 sm:p-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 lg:p-14"
         >
           {/* Left side */}
@@ -170,12 +155,8 @@ export default function CTA() {
           </div>
 
           {/* Form */}
-          <motion.form
+          <form
             onSubmit={handleSubmit}
-            initial={{ opacity: 0, x: 25 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.7, delay: 0.12 }}
             className="grid gap-5 rounded-[1.5rem] border border-white/10 bg-black/20 p-6 sm:p-8"
           >
             {/* Name / Business */}
@@ -383,11 +364,9 @@ export default function CTA() {
             </div>
 
             {/* Submit */}
-            <motion.button
+            <button
               type="submit"
               disabled={status === "loading"}
-              whileHover={status !== "loading" ? { y: -2 } : undefined}
-              whileTap={status !== "loading" ? { scale: 0.99 } : undefined}
               className="group mt-2 inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-semibold text-black transition hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === "loading" ? (
@@ -405,7 +384,7 @@ export default function CTA() {
                   />
                 </>
               )}
-            </motion.button>
+            </button>
 
             {/* Trust */}
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-neutral-600">
@@ -427,9 +406,7 @@ export default function CTA() {
 
             {/* Success */}
             {status === "success" && (
-              <motion.div
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
+              <div
                 className="rounded-xl border border-green-500/20 bg-green-500/[0.06] px-4 py-4"
               >
                 <div className="flex items-start gap-3">
@@ -449,28 +426,26 @@ export default function CTA() {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {/* Error */}
             {status === "error" && (
-              <motion.div
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
+              <div
                 className="rounded-xl border border-red-500/20 bg-red-500/[0.06] px-4 py-4"
               >
                 <p className="text-sm leading-6 text-red-400">
                   We couldn&apos;t send your request. Please try again in a
                   moment.
                 </p>
-              </motion.div>
+              </div>
             )}
 
             <p className="text-center text-xs leading-5 text-neutral-600">
               Your information is only used to respond to your project request.
             </p>
-          </motion.form>
-        </motion.div>
+          </form>
+        </div>
       </div>
     </section>
   );

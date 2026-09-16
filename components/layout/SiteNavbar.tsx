@@ -9,6 +9,7 @@ const navLinks = [
   { name: "Process", href: "#process" },
   { name: "Pricing", href: "#pricing" },
   { name: "FAQ", href: "#faq" },
+  { name: "About", href: "/about" },
 ];
 
 export default function SiteNavbar() {

@@ -2,16 +2,16 @@ import { ArrowUpRight } from "lucide-react";
 
 const links = {
   company: [
-    { name: "About", href: "#about" },
-    { name: "Work", href: "#work" },
-    { name: "Process", href: "#process" },
-    { name: "Pricing", href: "#pricing" },
+    { name: "About", href: "/about" },
+    { name: "Work", href: "/#work" },
+    { name: "Process", href: "/#process" },
+    { name: "Pricing", href: "/#pricing" },
   ],
   services: [
-    { name: "Custom Websites", href: "#services" },
-    { name: "Website Redesign", href: "#services" },
-    { name: "Website Care", href: "#services" },
-    { name: "SEO & Growth", href: "#services" },
+    { name: "Custom Websites", href: "/#services" },
+    { name: "Website Redesign", href: "/#services" },
+    { name: "Website Care", href: "/#services" },
+    { name: "SEO & Growth", href: "/#services" },
   ],
 };
 
@@ -35,7 +35,7 @@ export default function Footer() {
             </p>
 
             <a
-              href="#contact"
+              href="/#contact"
               className="group mt-7 inline-flex items-center gap-2 text-sm font-medium text-white"
             >
               Start a Project
