@@ -16,6 +16,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+
+    {
+      url: `${baseUrl}/web-design-south-jersey`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
     {
       url: `${baseUrl}/work/northline-barbers`,
       lastModified: new Date(),
