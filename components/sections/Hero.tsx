@@ -33,10 +33,10 @@ export default function Hero() {
             </h1>
 
             <p className="mt-7 max-w-2xl text-base leading-7 text-neutral-400 sm:mt-8 sm:text-xl sm:leading-8">
-              Guaman Digital builds modern, fast, and professional websites
-              designed to help businesses stand out, earn trust, and turn more
-              visitors into customers.
-            </p>
+  Guaman Digital builds modern, fast and professional websites for
+  businesses across South Jersey and beyond — designed to build trust,
+  attract customers and support real growth.
+</p>
 
             {/* CTA BUTTONS */}
             <div className="mt-9 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
