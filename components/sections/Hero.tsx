@@ -11,16 +11,16 @@ import {
 export default function Hero() {
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden px-5 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32 lg:px-8 lg:pb-24">
-      {/* Background glow */}
-      <div className="pointer-events-none absolute right-[-35%] top-[5%] h-[420px] w-[420px] rounded-full bg-blue-600/20 blur-[120px] sm:right-[-15%] sm:h-[520px] sm:w-[520px] lg:right-[-8%]" />
+      {/* Mobile-optimized background glows */}
+      <div className="pointer-events-none absolute right-[-35%] top-[5%] h-[320px] w-[320px] rounded-full bg-blue-600/15 blur-[60px] sm:right-[-15%] sm:h-[520px] sm:w-[520px] sm:bg-blue-600/20 sm:blur-[120px] lg:right-[-8%]" />
 
-      <div className="pointer-events-none absolute bottom-[2%] left-[-45%] h-[380px] w-[380px] rounded-full bg-blue-400/10 blur-[120px] sm:left-[-20%] sm:h-[460px] sm:w-[460px] lg:left-[-14%]" />
+      <div className="pointer-events-none absolute bottom-[2%] left-[-45%] h-[300px] w-[300px] rounded-full bg-blue-400/[0.08] blur-[60px] sm:left-[-20%] sm:h-[460px] sm:w-[460px] sm:bg-blue-400/10 sm:blur-[120px] lg:left-[-14%]" />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           {/* LEFT SIDE */}
           <div>
-            <div className="mb-6 inline-flex max-w-full items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-2 text-xs text-neutral-300 backdrop-blur sm:mb-7 sm:px-4 sm:text-sm">
+            <div className="mb-6 inline-flex max-w-full items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-2 text-xs text-neutral-300 sm:mb-7 sm:px-4 sm:text-sm sm:backdrop-blur">
               <Sparkles size={14} className="shrink-0 text-blue-400" />
               <span>Websites built to help businesses grow</span>
             </div>
@@ -53,7 +53,7 @@ export default function Hero() {
 
               <a
                 href="#work"
-                className="inline-flex w-full items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-4 text-sm font-medium text-neutral-200 backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:bg-white/10 sm:w-auto sm:text-base"
+                className="inline-flex w-full items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-4 text-sm font-medium text-neutral-200 transition duration-300 hover:-translate-y-0.5 hover:bg-white/10 sm:w-auto sm:text-base sm:backdrop-blur"
               >
                 View Our Work
               </a>
@@ -83,13 +83,12 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* RIGHT SIDE - WEBSITE PREVIEW */}
+          {/* RIGHT SIDE - DESKTOP ONLY */}
           <div className="relative hidden lg:block">
             <div className="absolute -inset-10 rounded-full bg-blue-600/10 blur-3xl" />
 
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.045] p-3 shadow-2xl shadow-black/40 backdrop-blur-xl">
               <div className="rounded-[1.5rem] border border-white/10 bg-[#080808]">
-                {/* Browser bar */}
                 <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
                   <div className="flex gap-1.5">
                     <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
@@ -104,7 +103,6 @@ export default function Hero() {
                   <div className="w-10" />
                 </div>
 
-                {/* Fake website */}
                 <div className="p-6">
                   <div className="flex items-center justify-between">
                     <div className="h-3 w-24 rounded-full bg-white/80" />
@@ -144,7 +142,6 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Performance badge */}
             <div className="absolute -bottom-7 -left-8 rounded-2xl border border-white/10 bg-[#0b0b0b]/95 p-4 shadow-xl backdrop-blur">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600/15">
@@ -170,11 +167,9 @@ export default function Hero() {
             <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5">
               <Code2 size={17} className="text-blue-400" />
             </div>
-
             <p className="text-base font-semibold text-white sm:text-lg">
               Custom Built
             </p>
-
             <p className="mt-1 text-xs text-neutral-500 sm:text-sm">
               Made for your business
             </p>
@@ -184,11 +179,9 @@ export default function Hero() {
             <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5">
               <Smartphone size={17} className="text-blue-400" />
             </div>
-
             <p className="text-base font-semibold text-white sm:text-lg">
               Mobile First
             </p>
-
             <p className="mt-1 text-xs text-neutral-500 sm:text-sm">
               Looks great everywhere
             </p>
@@ -198,11 +191,9 @@ export default function Hero() {
             <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5">
               <Gauge size={17} className="text-blue-400" />
             </div>
-
             <p className="text-base font-semibold text-white sm:text-lg">
               Fast Loading
             </p>
-
             <p className="mt-1 text-xs text-neutral-500 sm:text-sm">
               Optimized performance
             </p>
@@ -212,11 +203,9 @@ export default function Hero() {
             <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5">
               <Search size={17} className="text-blue-400" />
             </div>
-
             <p className="text-base font-semibold text-white sm:text-lg">
               SEO Ready
             </p>
-
             <p className="mt-1 text-xs text-neutral-500 sm:text-sm">
               Built to be discovered
             </p>
