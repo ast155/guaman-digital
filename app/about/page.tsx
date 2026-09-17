@@ -36,22 +36,22 @@ export const metadata: Metadata = {
 const profilePageSchema = {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
-  "@id": "https://www.guamandigital.com/about#profile",
-  url: "https://www.guamandigital.com/about",
+  "@id": "https://guamandigital.com/about#profile",
+  url: "https://guamandigital.com/about",
   name: "About Anderson Guaman",
   description:
     "About Anderson Guaman, founder of Guaman Digital and Computer Science student at Rutgers University–Camden.",
 
   mainEntity: {
     "@type": "Person",
-    "@id": "https://www.guamandigital.com/about#anderson-guaman",
+    "@id": "https://guamandigital.com/about#anderson-guaman",
 
     name: "Anderson Guaman",
 
-    url: "https://www.guamandigital.com/about",
+    url: "https://guamandigital.com/about",
 
     image:
-      "https://www.guamandigital.com/about/anderson-guaman-professional.jpg",
+      "https://guamandigital.com/about/anderson-guaman-professional.jpg",
 
     sameAs: ["https://www.instagram.com/andy._0g/"],
 
@@ -62,9 +62,9 @@ const profilePageSchema = {
 
     worksFor: {
       "@type": "Organization",
-      "@id": "https://www.guamandigital.com/#organization",
+      "@id": "https://guamandigital.com/#organization",
       name: "Guaman Digital",
-      url: "https://www.guamandigital.com",
+      url: "https://guamandigital.com",
     },
 
     affiliation: {
