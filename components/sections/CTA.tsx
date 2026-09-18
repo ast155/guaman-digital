@@ -29,6 +29,7 @@ export default function CTA() {
       email: formData.get("email"),
       phone: formData.get("phone"),
       service: formData.get("service"),
+      package: formData.get("package"),
       budget: formData.get("budget"),
       timeline: formData.get("timeline"),
       message: formData.get("message"),
@@ -62,14 +63,10 @@ export default function CTA() {
       className="relative overflow-hidden border-t border-white/10 px-5 py-24 sm:px-6 sm:py-28 lg:px-8 lg:py-36"
     >
       {/* Background glow */}
-      <div
-        className="pointer-events-none absolute right-[-15%] top-[5%] h-[520px] w-[520px] rounded-full bg-blue-600/[0.08] blur-[160px]"
-      />
+      <div className="pointer-events-none absolute right-[-15%] top-[5%] h-[520px] w-[520px] rounded-full bg-blue-600/[0.08] blur-[160px]" />
 
       <div className="relative z-10 mx-auto max-w-7xl">
-        <div
-          className="grid gap-14 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.025] p-7 sm:p-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 lg:p-14"
-        >
+        <div className="grid gap-14 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.025] p-7 sm:p-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 lg:p-14">
           {/* Left side */}
           <div className="flex flex-col justify-between">
             <div>
@@ -149,7 +146,7 @@ export default function CTA() {
             <div className="mt-12 border-t border-white/10 pt-7">
               <div className="flex items-center gap-2 text-sm text-neutral-500">
                 <Globe2 size={16} />
-                English & Spanish support available
+                English &amp; Spanish support available
               </div>
             </div>
           </div>
@@ -264,11 +261,52 @@ export default function CTA() {
                 <option value="Website Maintenance">
                   Website Maintenance
                 </option>
-                <option value="SEO & Growth">SEO & Growth</option>
+                <option value="SEO & Growth">SEO &amp; Growth</option>
                 <option value="Booking System">Booking System</option>
                 <option value="E-commerce">E-commerce</option>
-                <option value="AI & Automation">AI & Automation</option>
+                <option value="AI & Automation">AI &amp; Automation</option>
                 <option value="Other">Other</option>
+              </select>
+            </div>
+
+            {/* Package */}
+            <div>
+              <label
+                htmlFor="package"
+                className="mb-2 block text-sm text-neutral-300"
+              >
+                Website package
+              </label>
+
+              <select
+                id="package"
+                name="package"
+                defaultValue=""
+                className="w-full rounded-xl border border-white/10 bg-[#080808] px-4 py-3.5 text-neutral-300 outline-none transition focus:border-blue-500/60 focus:ring-2 focus:ring-blue-500/10"
+              >
+                <option value="" disabled>
+                  Select a package
+                </option>
+
+                <option value="Starter - $699">
+                  Starter — starting at $699
+                </option>
+
+                <option value="Business - $1,299">
+                  Business — starting at $1,299
+                </option>
+
+                <option value="Premium - $2,499+">
+                  Premium — starting at $2,499+
+                </option>
+
+                <option value="Website Care - $75/month">
+                  Website Care — starting at $75/month
+                </option>
+
+                <option value="Not sure">
+                  Not sure — help me choose
+                </option>
               </select>
             </div>
 
@@ -293,9 +331,21 @@ export default function CTA() {
                   </option>
 
                   <option value="$500 - $1,000">$500 – $1,000</option>
-                  <option value="$1,000 - $2,000">$1,000 – $2,000</option>
-                  <option value="$2,000 - $5,000">$2,000 – $5,000</option>
+
+                  <option value="$1,000 - $1,500">
+                    $1,000 – $1,500
+                  </option>
+
+                  <option value="$1,500 - $2,500">
+                    $1,500 – $2,500
+                  </option>
+
+                  <option value="$2,500 - $5,000">
+                    $2,500 – $5,000
+                  </option>
+
                   <option value="$5,000+">$5,000+</option>
+
                   <option value="Not sure yet">Not sure yet</option>
                 </select>
               </div>
@@ -400,15 +450,13 @@ export default function CTA() {
 
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 size={13} />
-                English & Spanish
+                English &amp; Spanish
               </span>
             </div>
 
             {/* Success */}
             {status === "success" && (
-              <div
-                className="rounded-xl border border-green-500/20 bg-green-500/[0.06] px-4 py-4"
-              >
+              <div className="rounded-xl border border-green-500/20 bg-green-500/[0.06] px-4 py-4">
                 <div className="flex items-start gap-3">
                   <CheckCircle2
                     size={18}
@@ -431,9 +479,7 @@ export default function CTA() {
 
             {/* Error */}
             {status === "error" && (
-              <div
-                className="rounded-xl border border-red-500/20 bg-red-500/[0.06] px-4 py-4"
-              >
+              <div className="rounded-xl border border-red-500/20 bg-red-500/[0.06] px-4 py-4">
                 <p className="text-sm leading-6 text-red-400">
                   We couldn&apos;t send your request. Please try again in a
                   moment.
