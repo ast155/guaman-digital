@@ -70,7 +70,7 @@ export default function Process() {
       className="relative overflow-hidden border-y border-white/10 bg-[#070707] py-24 sm:py-28 lg:py-32"
     >
       {/* Background glow */}
-      <div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-blue-600/[0.06] blur-[160px]" />
+      <div className="pointer-events-none absolute left-1/2 top-0 h-[300px] w-[380px] -translate-x-1/2 rounded-full bg-blue-600/[0.04] blur-[70px] sm:h-[500px] sm:w-[900px] sm:bg-blue-600/[0.06] sm:blur-[160px]" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* Heading */}

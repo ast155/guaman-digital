@@ -63,7 +63,7 @@ export default function CTA() {
       className="relative overflow-hidden border-t border-white/10 px-5 py-24 sm:px-6 sm:py-28 lg:px-8 lg:py-36"
     >
       {/* Background glow */}
-      <div className="pointer-events-none absolute right-[-15%] top-[5%] h-[520px] w-[520px] rounded-full bg-blue-600/[0.08] blur-[160px]" />
+      <div className="pointer-events-none absolute right-[-15%] top-[5%] h-[300px] w-[300px] rounded-full bg-blue-600/[0.05] blur-[70px] sm:h-[520px] sm:w-[520px] sm:bg-blue-600/[0.08] sm:blur-[160px]" />
 
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="grid gap-14 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.025] p-7 sm:p-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 lg:p-14">

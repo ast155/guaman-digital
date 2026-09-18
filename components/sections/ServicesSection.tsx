@@ -60,7 +60,7 @@ export default function ServicesSection() {
       className="relative overflow-hidden border-t border-white/5 px-5 py-24 sm:px-6 sm:py-28 lg:px-8 lg:py-32"
     >
       {/* Background glow */}
-      <div className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[620px] -translate-x-1/2 rounded-full bg-blue-600/10 blur-[140px]" />
+      <div className="pointer-events-none absolute left-1/2 top-0 h-[300px] w-[360px] -translate-x-1/2 rounded-full bg-blue-600/[0.07] blur-[70px] sm:h-[420px] sm:w-[620px] sm:bg-blue-600/10 sm:blur-[140px]" />
 
       <div className="relative mx-auto max-w-7xl">
         {/* Header */}

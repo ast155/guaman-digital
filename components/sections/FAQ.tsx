@@ -60,7 +60,7 @@ export default function FAQ() {
       className="relative overflow-hidden border-t border-white/10 px-5 py-24 sm:px-6 sm:py-28 lg:px-8 lg:py-36"
     >
       {/* Background glow */}
-      <div className="pointer-events-none absolute bottom-[-20%] left-[8%] h-[500px] w-[500px] rounded-full bg-blue-600/[0.04] blur-[150px]" />
+      <div className="pointer-events-none absolute bottom-[-20%] left-[8%] h-[280px] w-[280px] rounded-full bg-blue-600/[0.03] blur-[60px] sm:h-[500px] sm:w-[500px] sm:bg-blue-600/[0.04] sm:blur-[150px]" />
 
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
