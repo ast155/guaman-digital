@@ -1,5 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
+import type { Metadata } from "next";
 import {
+  ArrowLeft,
   ArrowRight,
   CalendarDays,
   Clock3,
@@ -7,6 +10,15 @@ import {
   Scissors,
   Star,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Northline Barbers | Concept Project",
+  description:
+    "A fictional barbershop website concept created by Guaman Digital to demonstrate modern web design, booking-focused UX, and responsive development.",
+  alternates: {
+    canonical: "/work/northline-barbers",
+  },
+};
 
 const services = [
   { name: "Classic Cut", price: "$35" },
@@ -64,8 +76,13 @@ const gallery = [
 export default function NorthlineBarbersPage() {
   return (
     <main className="min-h-screen bg-[#0a0908] text-white">
+      {/* CONCEPT NOTICE */}
+      <div className="fixed left-0 top-0 z-[60] w-full border-b border-blue-500/20 bg-blue-600 px-4 py-2 text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-white sm:text-xs">
+        Concept Project by Guaman Digital · Demo content shown below
+      </div>
+
       {/* NAVBAR */}
-      <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-[#0a0908]/85 backdrop-blur-xl">
+      <header className="fixed left-0 top-[32px] z-50 w-full border-b border-white/10 bg-[#0a0908]/85 backdrop-blur-xl sm:top-[34px]">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8">
           <a href="#" className="flex items-center gap-2">
             <Scissors size={20} className="text-[#d9a85d]" />
@@ -78,15 +95,19 @@ export default function NorthlineBarbersPage() {
             <a href="#services" className="transition hover:text-white">
               Services
             </a>
+
             <a href="#barbers" className="transition hover:text-white">
               Barbers
             </a>
+
             <a href="#gallery" className="transition hover:text-white">
               Gallery
             </a>
+
             <a href="#reviews" className="transition hover:text-white">
               Reviews
             </a>
+
             <a href="#location" className="transition hover:text-white">
               Visit
             </a>
@@ -102,13 +123,14 @@ export default function NorthlineBarbersPage() {
       </header>
 
       {/* HERO */}
-      <section className="relative min-h-screen overflow-hidden px-5 pb-20 pt-32 sm:px-6 lg:px-8">
+      <section className="relative min-h-screen overflow-hidden px-5 pb-20 pt-40 sm:px-6 lg:px-8">
         <div className="absolute inset-0">
           <Image
             src="/northline/hero.jpg"
-            alt="Premium barbershop interior"
+            alt="Northline Barbers fictional barbershop website concept"
             fill
             priority
+            sizes="100vw"
             className="object-cover"
           />
 
@@ -116,10 +138,10 @@ export default function NorthlineBarbersPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0908] via-transparent to-[#0a0908]/30" />
         </div>
 
-        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-8rem)] max-w-7xl items-center">
+        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-10rem)] max-w-7xl items-center">
           <div className="max-w-4xl">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#d9a85d]">
-              Camden / Philadelphia Area
+              Barbershop Website Concept
             </p>
 
             <h1 className="mt-5 text-5xl font-semibold leading-[0.95] tracking-[-0.05em] sm:text-6xl lg:text-8xl">
@@ -139,7 +161,7 @@ export default function NorthlineBarbersPage() {
                 href="#book"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d9a85d] px-7 py-4 font-semibold text-black transition hover:bg-[#e7b86e]"
               >
-                Book an Appointment
+                View Booking Experience
                 <ArrowRight size={18} />
               </a>
 
@@ -155,21 +177,21 @@ export default function NorthlineBarbersPage() {
               <div>
                 <p className="text-xl font-semibold">4.9</p>
                 <p className="mt-1 text-xs text-neutral-400">
-                  Google Rating
+                  Demo Rating
                 </p>
               </div>
 
               <div>
                 <p className="text-xl font-semibold">7 Days</p>
                 <p className="mt-1 text-xs text-neutral-400">
-                  Open Weekly
+                  Sample Schedule
                 </p>
               </div>
 
               <div>
                 <p className="text-xl font-semibold">Online</p>
                 <p className="mt-1 text-xs text-neutral-400">
-                  Easy Booking
+                  Booking Concept
                 </p>
               </div>
             </div>
@@ -184,12 +206,17 @@ export default function NorthlineBarbersPage() {
       >
         <div className="mx-auto max-w-7xl">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#d9a85d]">
-            Services
+            Sample Services
           </p>
 
           <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
             Clean work. Straightforward pricing.
           </h2>
+
+          <p className="mt-5 max-w-2xl leading-7 text-neutral-500">
+            Example services and pricing used to demonstrate how a barbershop
+            can present its offerings clearly online.
+          </p>
 
           <div className="mt-12 grid gap-4 md:grid-cols-2">
             {services.map((service) => (
@@ -218,12 +245,17 @@ export default function NorthlineBarbersPage() {
       >
         <div className="mx-auto max-w-7xl">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#d9a85d]">
-            Meet the team
+            Sample Team
           </p>
 
           <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
             Your barber matters.
           </h2>
+
+          <p className="mt-5 max-w-2xl leading-7 text-neutral-500">
+            Fictional profiles demonstrate how customers could discover each
+            barber&apos;s role and specialties before booking.
+          </p>
 
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {barbers.map((barber) => (
@@ -234,8 +266,9 @@ export default function NorthlineBarbersPage() {
                 <div className="relative aspect-[4/5] overflow-hidden">
                   <Image
                     src={barber.image}
-                    alt={`${barber.name} - ${barber.role}`}
+                    alt={`${barber.name} fictional barber profile`}
                     fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover transition duration-500 group-hover:scale-105"
                   />
 
@@ -270,7 +303,7 @@ export default function NorthlineBarbersPage() {
           </p>
 
           <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
-            The work speaks for itself.
+            The visual experience matters.
           </h2>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -288,8 +321,13 @@ export default function NorthlineBarbersPage() {
                 >
                   <Image
                     src={image}
-                    alt={`Northline Barbers gallery ${index + 1}`}
+                    alt={`Northline Barbers concept gallery ${index + 1}`}
                     fill
+                    sizes={
+                      index === 0
+                        ? "(max-width: 768px) 100vw, 50vw"
+                        : "(max-width: 768px) 100vw, 25vw"
+                    }
                     className="object-cover transition duration-500 hover:scale-105"
                   />
                 </div>
@@ -299,19 +337,24 @@ export default function NorthlineBarbersPage() {
         </div>
       </section>
 
-      {/* REVIEWS */}
+      {/* SAMPLE REVIEWS */}
       <section
         id="reviews"
         className="border-t border-white/10 px-5 py-24 sm:px-6 lg:px-8 lg:py-32"
       >
         <div className="mx-auto max-w-7xl">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#d9a85d]">
-            Reviews
+            Sample Reviews
           </p>
 
           <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
-            What clients say.
+            Designed with customer trust in mind.
           </h2>
+
+          <p className="mt-5 max-w-2xl text-sm leading-7 text-neutral-500">
+            Sample review content shown for demonstration purposes as part of
+            this fictional concept project.
+          </p>
 
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             {reviews.map((review) => (
@@ -330,7 +373,7 @@ export default function NorthlineBarbersPage() {
                 </p>
 
                 <p className="mt-6 text-sm text-neutral-500">
-                  {review.name}
+                  {review.name} · Sample profile
                 </p>
               </div>
             ))}
@@ -351,6 +394,10 @@ export default function NorthlineBarbersPage() {
               Visit Northline
             </h2>
 
+            <p className="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#d9a85d]">
+              Demo Location
+            </p>
+
             <p className="mt-4 text-neutral-400">
               125 Market Street
               <br />
@@ -365,7 +412,7 @@ export default function NorthlineBarbersPage() {
 
             <div className="mt-8 flex items-center gap-2 text-sm text-neutral-500">
               <Clock3 size={16} />
-              Walk-ins welcome
+              Sample business information
             </div>
           </div>
 
@@ -378,35 +425,200 @@ export default function NorthlineBarbersPage() {
             <div className="relative z-10">
               <CalendarDays size={22} className="text-[#d9a85d]" />
 
-              <h2 className="mt-6 text-3xl font-semibold">
+              <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-[#d9a85d]">
+                Booking Demo
+              </p>
+
+              <h2 className="mt-3 text-3xl font-semibold">
                 Ready for your next cut?
               </h2>
 
               <p className="mt-4 max-w-lg leading-7 text-neutral-400">
-                Choose your barber, select a service, and reserve your
-                appointment online.
+                This section demonstrates how customers could choose a barber,
+                select a service, and reserve an appointment online.
               </p>
 
-              <button className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#d9a85d] px-7 py-4 font-semibold text-black transition hover:bg-[#e7b86e]">
-                Book Appointment
+              <a
+                href="#case-study"
+                className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#d9a85d] px-7 py-4 font-semibold text-black transition hover:bg-[#e7b86e]"
+              >
+                See Project Strategy
                 <ArrowRight size={18} />
-              </button>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="border-t border-white/10 px-5 py-8 sm:px-6 lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 text-sm text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Northline Barbers.</p>
+      {/* GUAMAN DIGITAL CASE STUDY */}
+      <section
+        id="case-study"
+        className="border-t border-white/10 bg-[#050505] px-5 py-24 sm:px-6 lg:px-8 lg:py-32"
+      >
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-14 max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue-500">
+              Guaman Digital Concept Project
+            </p>
 
-          <a
-            href="/"
-            className="transition hover:text-white"
-          >
-            Concept by Guaman Digital
-          </a>
+            <h2 className="mt-5 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl lg:text-6xl">
+              Behind the project.
+            </h2>
+
+            <p className="mt-6 text-base leading-8 text-neutral-400 sm:text-lg">
+              Northline Barbers is a fictional brand created by Guaman Digital
+              to demonstrate how a modern barbershop website can combine
+              strong branding, service discovery, social proof, and
+              appointment-focused design.
+            </p>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-3">
+            <div className="rounded-[2rem] border border-white/10 bg-white/[0.025] p-7 sm:p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-500">
+                01 · The Goal
+              </p>
+
+              <h3 className="mt-5 text-2xl font-semibold">
+                Turn visitors into appointments.
+              </h3>
+
+              <p className="mt-4 leading-7 text-neutral-400">
+                Create a polished digital presence that makes services easy to
+                understand and keeps booking actions visible throughout the
+                experience.
+              </p>
+            </div>
+
+            <div className="rounded-[2rem] border border-white/10 bg-white/[0.025] p-7 sm:p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-500">
+                02 · The Approach
+              </p>
+
+              <h3 className="mt-5 text-2xl font-semibold">
+                Premium without being complicated.
+              </h3>
+
+              <p className="mt-4 leading-7 text-neutral-400">
+                Dark visuals, warm accents, clear typography, strong
+                photography, and straightforward navigation create a modern
+                experience without making customers search for what they need.
+              </p>
+            </div>
+
+            <div className="rounded-[2rem] border border-white/10 bg-white/[0.025] p-7 sm:p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-500">
+                03 · Key Features
+              </p>
+
+              <h3 className="mt-5 text-2xl font-semibold">
+                Built around the customer journey.
+              </h3>
+
+              <p className="mt-4 leading-7 text-neutral-400">
+                Service pricing, barber profiles, visual work, sample social
+                proof, location information, and prominent booking
+                calls-to-action work together in one responsive experience.
+              </p>
+            </div>
+          </div>
+
+          {/* PROJECT DETAILS */}
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+              <p className="text-xs uppercase tracking-[0.18em] text-neutral-600">
+                Industry
+              </p>
+              <p className="mt-2 font-medium text-neutral-200">
+                Barbershop
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+              <p className="text-xs uppercase tracking-[0.18em] text-neutral-600">
+                Focus
+              </p>
+              <p className="mt-2 font-medium text-neutral-200">
+                Booking & Conversion
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+              <p className="text-xs uppercase tracking-[0.18em] text-neutral-600">
+                Experience
+              </p>
+              <p className="mt-2 font-medium text-neutral-200">
+                Responsive Web
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+              <p className="text-xs uppercase tracking-[0.18em] text-neutral-600">
+                Project Type
+              </p>
+              <p className="mt-2 font-medium text-neutral-200">
+                Concept
+              </p>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="relative mt-16 overflow-hidden rounded-[2rem] border border-blue-500/20 bg-blue-500/[0.06] p-8 sm:p-10 lg:p-12">
+            <div className="absolute right-[-10%] top-[-50%] h-72 w-72 rounded-full bg-blue-600/10 blur-[100px]" />
+
+            <div className="relative z-10 flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
+              <div className="max-w-2xl">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-400">
+                  Guaman Digital
+                </p>
+
+                <h3 className="mt-4 text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">
+                  Want a website built for your business?
+                </h3>
+
+                <p className="mt-4 leading-7 text-neutral-400">
+                  We create modern websites designed around your brand,
+                  customers, and business goals.
+                </p>
+              </div>
+
+              <Link
+                href="/#contact"
+                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-semibold text-black transition hover:bg-neutral-200"
+              >
+                Start a Project
+                <ArrowRight size={18} />
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-8 flex flex-col items-center gap-5">
+            <p className="max-w-3xl text-center text-xs leading-6 text-neutral-600">
+              Northline Barbers is a fictional concept project. Business
+              information, names, reviews, ratings, pricing, and location
+              details shown above are sample content created for demonstration
+              purposes.
+            </p>
+
+            <Link
+              href="/#work"
+              className="inline-flex items-center gap-2 text-sm font-medium text-neutral-400 transition hover:text-white"
+            >
+              <ArrowLeft size={16} />
+              Back to Guaman Digital Portfolio
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-white/10 bg-[#050505] px-5 py-8 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 text-sm text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
+          <p>Northline Barbers · Fictional concept project</p>
+
+          <Link href="/" className="transition hover:text-white">
+            Designed by Guaman Digital
+          </Link>
         </div>
       </footer>
     </main>
