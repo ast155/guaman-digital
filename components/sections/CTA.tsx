@@ -33,6 +33,9 @@ export default function CTA() {
       budget: formData.get("budget"),
       timeline: formData.get("timeline"),
       message: formData.get("message"),
+
+      // Honeypot — real users should never fill this field.
+      website: formData.get("website"),
     };
 
     try {
@@ -154,8 +157,24 @@ export default function CTA() {
           {/* Form */}
           <form
             onSubmit={handleSubmit}
-            className="grid gap-5 rounded-[1.5rem] border border-white/10 bg-black/20 p-6 sm:p-8"
+            className="relative grid gap-5 rounded-[1.5rem] border border-white/10 bg-black/20 p-6 sm:p-8"
           >
+            {/* Honeypot anti-spam field */}
+            <div
+              aria-hidden="true"
+              className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden"
+            >
+              <label htmlFor="website">Website</label>
+
+              <input
+                id="website"
+                name="website"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
             {/* Name / Business */}
             <div className="grid gap-5 sm:grid-cols-2">
               <div>
@@ -171,6 +190,7 @@ export default function CTA() {
                   name="name"
                   type="text"
                   required
+                  maxLength={100}
                   autoComplete="name"
                   placeholder="Your name"
                   className="w-full rounded-xl border border-white/10 bg-[#080808] px-4 py-3.5 text-white outline-none transition placeholder:text-neutral-600 focus:border-blue-500/60 focus:ring-2 focus:ring-blue-500/10"
@@ -189,6 +209,7 @@ export default function CTA() {
                   id="business"
                   name="business"
                   type="text"
+                  maxLength={120}
                   autoComplete="organization"
                   placeholder="Your business"
                   className="w-full rounded-xl border border-white/10 bg-[#080808] px-4 py-3.5 text-white outline-none transition placeholder:text-neutral-600 focus:border-blue-500/60 focus:ring-2 focus:ring-blue-500/10"
@@ -211,6 +232,7 @@ export default function CTA() {
                   name="email"
                   type="email"
                   required
+                  maxLength={254}
                   autoComplete="email"
                   placeholder="you@business.com"
                   className="w-full rounded-xl border border-white/10 bg-[#080808] px-4 py-3.5 text-white outline-none transition placeholder:text-neutral-600 focus:border-blue-500/60 focus:ring-2 focus:ring-blue-500/10"
@@ -229,6 +251,7 @@ export default function CTA() {
                   id="phone"
                   name="phone"
                   type="tel"
+                  maxLength={40}
                   autoComplete="tel"
                   placeholder="(555) 555-5555"
                   className="w-full rounded-xl border border-white/10 bg-[#080808] px-4 py-3.5 text-white outline-none transition placeholder:text-neutral-600 focus:border-blue-500/60 focus:ring-2 focus:ring-blue-500/10"
@@ -345,7 +368,6 @@ export default function CTA() {
                   </option>
 
                   <option value="$5,000+">$5,000+</option>
-
                   <option value="Not sure yet">Not sure yet</option>
                 </select>
               </div>
@@ -407,6 +429,7 @@ export default function CTA() {
                 id="message"
                 name="message"
                 required
+                maxLength={3000}
                 rows={6}
                 placeholder="Tell us about your business, goals, current website, features you need, or anything else we should know..."
                 className="w-full resize-none rounded-xl border border-white/10 bg-[#080808] px-4 py-3.5 text-white outline-none transition placeholder:text-neutral-600 focus:border-blue-500/60 focus:ring-2 focus:ring-blue-500/10"

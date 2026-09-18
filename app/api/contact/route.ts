@@ -4,8 +4,28 @@ import { Resend } from "resend";
 const resendApiKey = process.env.RESEND_API_KEY;
 const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
-function escapeHtml(value: unknown) {
-  return String(value ?? "")
+const MAX_BODY_SIZE = 20_000;
+
+const LIMITS = {
+  name: 100,
+  business: 120,
+  email: 254,
+  phone: 40,
+  service: 100,
+  package: 100,
+  budget: 100,
+  timeline: 100,
+  message: 3000,
+};
+
+function cleanText(value: unknown, maxLength: number) {
+  if (typeof value !== "string") return "";
+
+  return value.trim().slice(0, maxLength);
+}
+
+function escapeHtml(value: string) {
+  return value
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
@@ -13,41 +33,72 @@ function escapeHtml(value: unknown) {
     .replaceAll("'", "&#039;");
 }
 
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 export async function POST(request: Request) {
   try {
     if (!resend) {
       return NextResponse.json(
-        {
-          error: "Email service is not configured.",
-        },
-        {
-          status: 500,
-        }
+        { error: "Email service is not configured." },
+        { status: 500 }
+      );
+    }
+
+    const contentType = request.headers.get("content-type");
+
+    if (!contentType?.includes("application/json")) {
+      return NextResponse.json(
+        { error: "Invalid request." },
+        { status: 415 }
+      );
+    }
+
+    const contentLength = Number(request.headers.get("content-length") || 0);
+
+    if (contentLength > MAX_BODY_SIZE) {
+      return NextResponse.json(
+        { error: "Request is too large." },
+        { status: 413 }
       );
     }
 
     const body = await request.json();
 
-    const {
-      name,
-      business,
-      email,
-      phone,
-      service,
-      package: selectedPackage,
-      budget,
-      timeline,
-      message,
-    } = body;
+    if (!body || typeof body !== "object" || Array.isArray(body)) {
+      return NextResponse.json(
+        { error: "Invalid request." },
+        { status: 400 }
+      );
+    }
+
+    // Honeypot. Real visitors should never fill this field.
+    if (typeof body.website === "string" && body.website.trim()) {
+      return NextResponse.json({ success: true }, { status: 200 });
+    }
+
+    const name = cleanText(body.name, LIMITS.name);
+    const business = cleanText(body.business, LIMITS.business);
+    const email = cleanText(body.email, LIMITS.email).toLowerCase();
+    const phone = cleanText(body.phone, LIMITS.phone);
+    const service = cleanText(body.service, LIMITS.service);
+    const selectedPackage = cleanText(body.package, LIMITS.package);
+    const budget = cleanText(body.budget, LIMITS.budget);
+    const timeline = cleanText(body.timeline, LIMITS.timeline);
+    const message = cleanText(body.message, LIMITS.message);
 
     if (!name || !email || !service || !message) {
       return NextResponse.json(
-        {
-          error: "Please complete all required fields.",
-        },
-        {
-          status: 400,
-        }
+        { error: "Please complete all required fields." },
+        { status: 400 }
+      );
+    }
+
+    if (!isValidEmail(email)) {
+      return NextResponse.json(
+        { error: "Please enter a valid email address." },
+        { status: 400 }
       );
     }
 
@@ -61,11 +112,15 @@ export async function POST(request: Request) {
     const safeTimeline = escapeHtml(timeline);
     const safeMessage = escapeHtml(message);
 
+    const subjectName = (business || name)
+      .replace(/[\r\n]/g, " ")
+      .slice(0, 120);
+
     const { data, error } = await resend.emails.send({
       from: "Guaman Digital <onboarding@resend.dev>",
       to: ["andygamers2005@gmail.com"],
-      replyTo: String(email),
-      subject: `New Project Request — ${business || name}`,
+      replyTo: email,
+      subject: `New Project Request — ${subjectName}`,
 
       html: `
         <div style="font-family: Arial, Helvetica, sans-serif; max-width: 680px; margin: 0 auto; background: #ffffff; color: #111111; padding: 32px; border-radius: 12px;">
@@ -151,12 +206,8 @@ export async function POST(request: Request) {
       console.error("Resend error:", error);
 
       return NextResponse.json(
-        {
-          error: "Unable to send project request.",
-        },
-        {
-          status: 500,
-        }
+        { error: "Unable to send project request." },
+        { status: 500 }
       );
     }
 
@@ -165,20 +216,14 @@ export async function POST(request: Request) {
         success: true,
         id: data?.id,
       },
-      {
-        status: 200,
-      }
+      { status: 200 }
     );
   } catch (error) {
     console.error("Contact API error:", error);
 
     return NextResponse.json(
-      {
-        error: "Something went wrong.",
-      },
-      {
-        status: 500,
-      }
+      { error: "Invalid request." },
+      { status: 400 }
     );
   }
 }
